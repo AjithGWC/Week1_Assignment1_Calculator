@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <style>
+        h2{
+            color: white;
+            text-align: center;
+            padding: 0.5rem;
+        }
+        .w-30{
+            width: 20%;
+        }
+    </style>
+    <body>
+        <div class="p-3 w-64">
+            <div style="border: 2px;border-color: black;border-style: solid;width: 300px;">
+                <div class="flex d-flex gap-1 p-2">
+                    <div class="grid grid-col-3 w-full" style="background-color: grey;" id="result"></div>
+                    <div class="bg-blue-500 w-30"><h2 id="C" onclick="cal('C')">C</h2></div>  
+                </div>
+                <div id="main" class="grid grid-cols-4 gap-1 justify-evenly p-1">  
+                    <div class="bg-blue-500 w-26"><h2 id="1" onclick="cal('1')">1</h2></div>  
+                    <div class="bg-blue-500 w-26"><h2 id="2" onclick="cal('2')">2</h2></div>  
+                    <div class="bg-blue-500 w-26"><h2 id="3" onclick="cal('3')">3</h2></div> 
+                    <div class="bg-blue-500 w-26"><h2 id="+" onclick="cal('+')">+</h2></div>  
+                    <div class="bg-blue-500 w-26"><h2 id="4" onclick="cal('4')">4</h2></div>  
+                    <div class="bg-blue-500 w-26"><h2 id="5" onclick="cal('5')">5</h2></div> 
+                    <div class="bg-blue-500 w-26"><h2 id="6" onclick="cal('6')">6</h2></div> 
+                    <div class="bg-blue-500 w-26"><h2 id="-" onclick="cal('-')">-</h2></div>  
+                    <div class="bg-blue-500 w-26"><h2 id="7" onclick="cal('7')">7</h2></div>
+                    <div class="bg-blue-500 w-26"><h2 id="8" onclick="cal('8')">8</h2></div>
+                    <div class="bg-blue-500 w-26"><h2 id="9" onclick="cal('9')">9</h2></div>
+                    <div class="bg-blue-500 w-26"><h2 id="*" onclick="cal('*')">*</h2></div> 
+                    <div class="bg-blue-500 w-26"><h2 id="0" onclick="cal('0')">0</h2></div>
+                    <div class="bg-blue-500 w-26"><h2 id="." onclick="cal('.')">.</h2></div>
+                    <div class="bg-blue-500 w-26"><h2 id="/" onclick="cal('/')">/</h2></div>
+                    <div class="bg-blue-500 w-26"><h2 id="=" onclick="cal('=')">=</h2></div> 
+                </div>  
+            </div>
+        </div>
+    </body>
+    <script>
+        function cal(value) {
+            var results = document.getElementById("result");
+
+            if (value === 'C') {
+                results.innerHTML = '';
+            } else if (value === '=') {
+                try {
+                    results.innerHTML = eval(results.innerHTML);
+                } catch (error) {
+                    results.innerHTML = 'Error...';
+                }
+            } else if(results.innerHTML === 'Error...'){
+                results.innerHTML = value;
+            } else if(results.innerHTML === 'Please Enter Values.'){
+                results.innerHTML = value;
+            } else {
+                results.innerHTML += value;
+            }
+ 
+            if(value === '=' && results.innerHTML === 'undefined'){
+                console.log('ds');
+                results.innerHTML = 'Please Enter Values.';
+            }
+        }
+    </script>
+</html>
